@@ -3,10 +3,11 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 
-import modules.tests
+import modules.ui as ui
 
 def main():
-    print(modules.tests.test())
+    ui.print_logo()
+    ui.print_divider()
 
 if __name__ == "__main__":
     main()
