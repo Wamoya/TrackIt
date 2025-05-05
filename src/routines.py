@@ -1,6 +1,7 @@
 import modules.ui as ui
 import modules.readers as readers
 from modules.readers import Objective, Log
+import subprocess
 
 
 def read_db(objectives_path, log_path) -> tuple[list[Objective], list[Log]]: # Read both .csv files and return their values
@@ -16,52 +17,36 @@ def read_db(objectives_path, log_path) -> tuple[list[Objective], list[Log]]: # R
 
     return objectives, logs
 
-def main_menu() -> str:
-    while True:
-        ui.set_color("cyan")
-        print("What do you want to do?")
-        print("\ti. Edit the database.")
-        print("\to. Read the database.")
-        print("\tq. Quit.")
-
-        valid_answers = ["i", "o", "q"]
-        answer = ui.get_answer(valid_answers)
-
-        if answer == "":
-            pass
-        else:
-            return answer
-
-def edit_menu():
-    while True:
-        ui.set_color("cyan")
-        print("How do you want to edit the database?")
-        print("\t1. Add a new entry to the log.")
-        print("\t2. Create a new objective.")
-        print("\t3. Delete a log entry.")
-        print("\t4. Delete an objective.")
-        print("\t0. Go back.")
-
-        valid_answers = ["1", "2", "3", "4", "0"]
-        answer = ui.get_answer(valid_answers)
-
-        if answer == "":
-            pass
-        else:
-            return answer
 
 
-def read_menu():
-    while True:
-        ui.set_color("cyan")
-        print("How do you want to read the database?")
-        print("\t1. Use fzf.")
-        print("\t2. ...")
+def menu(title: str, options: dict[str, str], color: str="cyan") -> str | None:
+    answer = None
+    while answer == None:
+        ui.set_color(color)
+        print(title)
+        for key, description in options.items():
+            print(f"\t{key}. {description}")
 
-        valid_answers = ["1", "2"]
-        answer = ui.get_answer(valid_answers)
+        print()
 
-        if answer == "":
-            pass
-        else:
-            return answer
+        valid_answers = list(options.keys())
+        answer = get_answer(valid_answers)
+
+    return answer
+
+def get_answer(valid_answers: list[str], color_initial: str="magenta", color_final: str="reset") -> str | None:
+
+    valid_answers_str = f"[{'/'.join(answer for answer in valid_answers)}]"
+
+    prompt_msg = f"Waiting for user input {valid_answers_str} "
+    error_msg  = f"Invalid input. Accepted values are {valid_answers_str}\n"
+
+    answer = input(ui.colored_text(prompt_msg, color_initial, color_final)).strip().lower()
+
+    if answer in valid_answers:
+        return answer
+    else:
+        ui.set_color("red")
+        print(error_msg)
+        ui.set_color("reset")
+        return None

@@ -20,23 +20,6 @@ def set_color(color):
 def colored_text(text: str, color_initial: str, color_final: str="reset"):
     return f"\033[{colors[color_initial]}m{text}\033[{colors[color_final]}m"
 
-def get_answer(valid_answers: list[str], color_initial: str="magenta", color_final: str="reset") -> str:
-
-    valid_answers_str = f"[{'/'.join(answer for answer in valid_answers)}]"
-
-    prompt_msg = f"Waiting for user input {valid_answers_str} "
-    error_msg  = f"Invalid input. Accepted values are {valid_answers_str}\n"
-
-    answer = input(colored_text(prompt_msg, color_initial, color_final)).strip().lower()
-
-    if answer in valid_answers:
-        return answer
-    else:
-        set_color("red")
-        print(error_msg)
-        return ""
-
-
 # Prints the logo 
 def print_logo():
     code = "yellow"
@@ -44,7 +27,6 @@ def print_logo():
         set_color(code)
         print(f.read())
         set_color("reset")
-
 
 def print_divider():
     print("\n" + "-" * 100 + "\n\n")
