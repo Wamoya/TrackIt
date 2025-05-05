@@ -9,14 +9,34 @@ import modules.readers as readers
 OBJECTIVES_DB = "data/objectives.csv"
 LOGS_DB = "data/log.csv"
 
-def main():
+
+def test_mode(yes: bool):
+    if yes:
+        print(ui.color("red") + "Running on mode: Test" + ui.color("reset"))
+        run_tests()
+        exit(0)
+    else:
+        print(ui.color("red") + "Running on mode: Normal" + ui.color("reset"))
+
+def run_tests():
     ui.print_logo()
-    objectives = readers.read_objectives(OBJECTIVES_DB)
-    logs =       readers.read_logs(LOGS_DB)
     ui.print_divider()
+
+    objectives = readers.read_objectives(OBJECTIVES_DB)
+    logs       = readers.read_logs(LOGS_DB)
+
     print(objectives)
     ui.print_divider()
+
     print(logs)
+    ui.print_divider()
+
+
+
+def main():
+    test_mode(True) # Temporary function call for debugging purposes
+    
+    ui.print_logo()
 
 if __name__ == "__main__":
     main()
