@@ -40,7 +40,16 @@ def main():
     ui.print_logo()
     objectives, logs = routines.read_db(OBJECTIVES_DB, LOGS_DB)
 
-    routines.main_menu()
+    answer = routines.main_menu()
+
+    match answer:
+        case "i":
+            answer = routines.edit_menu()
+        case "o":
+            answer = routines.read_menu()
+        case "q":
+            exit(0)
+
 
 
 
