@@ -13,14 +13,20 @@ LOGS_DB       = "data/log.csv"
 
 def test_mode(yes: bool):
     if yes:
-        print(ui.color("red") + "Running on mode: Test" + ui.color("reset"))
+        ui.color("red")
+        print("Running on mode: Test")
+        ui.color("reset")
 
         run_tests()
 
-        print(ui.color("green") + "All thest have been executed." + ui.color("reset"))
+        ui.color("green")
+        print("All thest have been executed.")
+        ui.color("reset")
         exit(0)
     else:
-        print(ui.color("red") + "Running on mode: Normal" + ui.color("reset"))
+        ui.color("red")
+        print("Running on mode: Normal")
+        ui.color("reset")
 
 def run_tests():
     tests.test_reloading_db()
@@ -33,7 +39,7 @@ def main():
     ui.print_logo()
     objectives, logs = routines.read_db(OBJECTIVES_DB, LOGS_DB)
 
-    
+
 
 if __name__ == "__main__":
     main()

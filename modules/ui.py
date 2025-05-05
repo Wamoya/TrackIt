@@ -5,30 +5,32 @@ LOGO = "assets/logo.txt"
 def color(color):
     match color:
         case "red":
-            return "\033[31m"
+            color = "\033[31m"
         case "green":
-            return "\033[32m"
+            color = "\033[32m"
         case "yellow":
-            return "\033[33m"
+            color = "\033[33m"
         case "blue":
-            return "\033[34m"
+            color = "\033[34m"
         case "purple":
-            return "\033[35m"
+            color = "\033[35m"
         case "cyan":
-            return "\033[36m"
+            color = "\033[36m"
         case "reset":
-            return "\033[0m"
+            color = "\033[0m"
 
         case _:
             raise ValueError("Invalid argument.")
+
+    print(color, end="")
 
 # Prints the logo 
 def print_logo():
     code = "yellow"
     with open(LOGO, encoding="utf-8") as f:
-        print(color(code))
+        color(code)
         print(f.read())
-        print(color("reset"))
+        color("reset")
 
 
 def print_divider():
