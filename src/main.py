@@ -40,6 +40,8 @@ def main():
     ui.print_logo()
     objectives, logs = routines.read_db(OBJECTIVES_DB, LOGS_DB)
 
+    routines.main_menu()
+
 
 
 if __name__ == "__main__":

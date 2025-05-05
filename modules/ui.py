@@ -1,28 +1,24 @@
 LOGO = "assets/logo.txt"
 
 
+colors = {
+        "black":   "30",
+        "red":     "31",
+        "green":   "32",
+        "yellow":  "33",
+        "blue":    "34",
+        "magenta": "35",
+        "cyan":    "36",
+        "white":   "37",
+        "reset":   "0"
+        }
+
 # Returns the ANSI color code of a color passed as an argument
 def set_color(color):
-    match color:
-        case "red":
-            color = "\033[31m"
-        case "green":
-            color = "\033[32m"
-        case "yellow":
-            color = "\033[33m"
-        case "blue":
-            color = "\033[34m"
-        case "purple":
-            color = "\033[35m"
-        case "cyan":
-            color = "\033[36m"
-        case "reset":
-            color = "\033[0m"
+    print(f"\033[{colors[color]}m", end="")
 
-        case _:
-            raise ValueError("Invalid argument.")
-
-    print(color, end="")
+def colored_text(text: str, color_initial: str, color_final: str="reset"):
+    return f"\033[{colors[color_initial]}m{text}\033[{colors[color_final]}m"
 
 # Prints the logo 
 def print_logo():
