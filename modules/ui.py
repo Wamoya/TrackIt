@@ -1,3 +1,6 @@
+LOGO = "assets/logo.txt"
+
+
 # Returns the ANSI color code of a color passed as an argument
 def color(color):
     match color:
@@ -21,17 +24,12 @@ def color(color):
 
 # Prints the logo 
 def print_logo():
-    logo = color("yellow") + r"""
- /$$$$$$$$                           /$$       /$$$$$$ /$$    
-|__  $$__/                          | $$      |_  $$_/| $$    
-   | $$  /$$$$$$  /$$$$$$   /$$$$$$$| $$   /$$  | $$ /$$$$$$  
-   | $$ /$$__  $$|____  $$ /$$_____/| $$  /$$/  | $$|_  $$_/  
-   | $$| $$  \__/ /$$$$$$$| $$      | $$$$$$/   | $$  | $$    
-   | $$| $$      /$$__  $$| $$      | $$_  $$   | $$  | $$ /$$
-   | $$| $$     |  $$$$$$$|  $$$$$$$| $$ \  $$ /$$$$$$|  $$$$/
-   |__/|__/      \_______/ \_______/|__/  \__/|______/ \___/  """ + color("reset")
+    code = "yellow"
+    with open(LOGO, encoding="utf-8") as f:
+        print(color(code))
+        print(f.read())
+        print(color("reset"))
 
-    print(logo)
 
 def print_divider():
     print("\n" + "-" * 100 + "\n\n")
