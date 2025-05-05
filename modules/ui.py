@@ -2,7 +2,7 @@ LOGO = "assets/logo.txt"
 
 
 # Returns the ANSI color code of a color passed as an argument
-def color(color):
+def set_color(color):
     match color:
         case "red":
             color = "\033[31m"
@@ -28,9 +28,9 @@ def color(color):
 def print_logo():
     code = "yellow"
     with open(LOGO, encoding="utf-8") as f:
-        color(code)
+        set_color(code)
         print(f.read())
-        color("reset")
+        set_color("reset")
 
 
 def print_divider():

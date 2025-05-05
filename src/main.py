@@ -13,20 +13,21 @@ LOGS_DB       = "data/log.csv"
 
 def test_mode(yes: bool):
     if yes:
-        ui.color("red")
+        ui.set_color("red")
         print("Running on mode: Test")
-        ui.color("reset")
+        ui.set_color("reset")
 
         run_tests()
 
-        ui.color("green")
+        ui.set_color("green")
         print("All thest have been executed.")
-        ui.color("reset")
+        ui.set_color("reset")
         exit(0)
+
     else:
-        ui.color("red")
+        ui.set_color("red")
         print("Running on mode: Normal")
-        ui.color("reset")
+        ui.set_color("reset")
 
 def run_tests():
     tests.test_reloading_db()

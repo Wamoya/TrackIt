@@ -4,9 +4,9 @@ from modules.readers import Objective, Log
 
 
 def read_db(objectives_path, log_path) -> tuple[list[Objective], list[Log]]: # Read both .csv files and return their values
-    ui.color("green")
+    ui.set_color("green")
     print("\tReloading...")
-    ui.color("reset")
+    ui.set_color("reset")
 
     objectives = readers.read_objectives(objectives_path)
     print(f"\t- {len(objectives)} objective(s) were loaded.")
