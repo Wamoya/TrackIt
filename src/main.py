@@ -20,7 +20,7 @@ def test_mode(yes: bool):
         run_tests()
 
         ui.set_color("green")
-        print("All thest have been executed.")
+        print("All tests have been executed.")
         ui.set_color("reset")
         exit(0)
 
@@ -31,18 +31,21 @@ def test_mode(yes: bool):
 
 def run_tests():
     tests.test_reloading_db()
+    tests.test_get_list_of_attribute()
+    tests.test_filter_by()
+    tests.test_get_count_per_attr()
+    tests.test_plt_activity()
 
 
 
 def main():
-    test_mode(False) # Temporary function call for debugging purposes
+    test_mode(True) # Temporary function call for debugging purposes
     
     ui.print_logo()
     objectives, logs = routines.read_db(OBJECTIVES_DB, LOGS_DB)
 
     next_menu = "main"
-    running    = True
-
+    running   = True
     while running:
         match next_menu:
             case "main":
