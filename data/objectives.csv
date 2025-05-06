@@ -1,2 +1,14 @@
-date;id;max;has_deadline;deadline;name;description
-2025-05-05;DEV;7;0;;Develop this app;Work on developing this app
+creation_date;id;max;has_deadline;deadline;name;description
+2025-01-01;GYM;12;1;2025-06-01;Go to the gym;Maintain a consistent workout schedule
+2025-02-15;WAT;31;0;;Drink water;Drink 2L of water daily
+2025-03-03;REA;20;1;2025-05-31;Read books;Finish 3 books by end of spring
+2025-04-10;DEV;7;0;;Develop this app;Work daily on coding and features
+2025-04-15;SLE;30;0;;Sleep early;Go to bed before 11 PM
+2025-04-20;MED;25;0;;Meditate;Practice mindfulness each morning
+2025-04-21;SOC;8;1;2025-05-20;Socialize;Plan 2 social events this month
+2025-04-22;LAN;10;1;2025-06-15;Learn French;Complete Duolingo intermediate track
+2025-04-25;BUD;1;1;2025-05-01;Make a budget;Organize monthly expenses
+2025-04-26;PLN;3;0;;Plan week;Write a weekly plan every Sunday
+2025-04-27;CLE;4;0;;Clean room;Tidy up your workspace and room regularly
+2025-04-28;WAL;15;0;;Walk;Take a 30-minute walk each day
+2025-04-29;STU;18;1;2025-06-10;Study DSA;Review algorithms and solve problems
