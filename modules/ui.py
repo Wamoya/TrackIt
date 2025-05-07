@@ -14,7 +14,7 @@ colors = {
         }
 
 # Returns the ANSI color code of a color passed as an argument
-def set_color(color):
+def set_color(color: str):
     print(f"\033[{colors[color]}m", end="")
 
 def colored_text(text: str, color_initial: str, color_final: str="reset"):
