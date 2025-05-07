@@ -6,7 +6,7 @@ import subprocess
 
 def read_db(objectives_path, log_path) -> tuple[list[Objective], list[Log]]: # Read both .csv files and return their values
     ui.set_color("green")
-    print("\tReloading...")
+    print("\n\tReloading...")
     ui.set_color("reset")
 
     objectives = readers.read_objectives(objectives_path)
