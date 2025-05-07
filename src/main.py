@@ -33,7 +33,6 @@ def run_tests():
     tests.test_reloading_db()
     tests.test_get_list_of_attribute()
     tests.test_filter_by()
-    tests.test_get_count_per_attr()
     tests.test_plt_activity()
 
 

@@ -43,11 +43,6 @@ def test_filter_by(objectives_path="data/objectives.csv", logs_path="data/log.cs
     
     print(ti.filter_by(objectives, "has_deadline", False))
 
-def test_get_count_per_attr(objectives_path="data/objectives.csv", logs_path="data/log.csv"):
-    objectives, logs = routines.read_db(objectives_path, logs_path)
-
-    print(ti.get_count_per_attr(logs, "creation_date"))
-
 def test_plt_activity(objectives_path="data/objectives.csv", logs_path="data/log.csv"):
     objectives, logs = routines.read_db(objectives_path, logs_path)
     ti.plt_activity(objectives, logs)
