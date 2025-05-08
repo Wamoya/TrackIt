@@ -13,18 +13,18 @@ colors = {
         "reset":   "0"
         }
 
-# Returns the ANSI color code of a color passed as an argument
+# Prints the ANSI color code of a color passed as an argument
 def set_color(color: str):
-    print(f"\033[{colors[color]}m", end="")
+    print(f"\033[{colors[color.lower()]}m", end="")
 
 def colored_text(text: str, color_initial: str, color_final: str="reset"):
-    return f"\033[{colors[color_initial]}m{text}\033[{colors[color_final]}m"
+    return f"\033[{colors[color_initial.lower()]}m{text}\033[{colors[color_final.lower()]}m"
 
 # Prints the logo 
 def print_logo():
-    code = "yellow"
+    color = "yellow"
     with open(LOGO, encoding="utf-8") as f:
-        set_color(code)
+        set_color(color)
         print(f.read())
         set_color("reset")
 
