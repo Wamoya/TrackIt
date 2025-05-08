@@ -17,7 +17,7 @@ colors = {
 def set_color(color: str):
     print(f"\033[{colors[color.lower()]}m", end="")
 
-def colored_text(text: str, color_initial: str, color_final: str="reset"):
+def colored_text(text: str, color_initial: str, color_final: str="reset") -> str:
     return f"\033[{colors[color_initial.lower()]}m{text}\033[{colors[color_final.lower()]}m"
 
 # Prints the logo 
