@@ -7,8 +7,8 @@ import modules.ui as ui
 import routines
 import modules.tests as tests
 
-OBJECTIVES_DB = "data/objectives.csv"
-LOGS_DB       = "data/log.csv"
+OBJECTIVES_PATH = "data/objectives.csv"
+LOGS_PATH       = "data/log.csv"
 
 
 def test_mode(yes: bool):
@@ -38,10 +38,10 @@ def run_tests():
 
 
 def main():
-    test_mode(True) # Temporary function call for debugging purposes
+    test_mode(False) # Temporary function call for debugging purposes
     
     ui.print_logo()
-    objectives, logs = routines.read_db(OBJECTIVES_DB, LOGS_DB)
+    objectives, logs = routines.read_db(OBJECTIVES_PATH, LOGS_PATH)
 
     next_menu = "main"
     running   = True
@@ -79,9 +79,9 @@ def main():
             case "edit":
                 match answer:
                     case "1":
-                        print("Adding new entry stuff...")
+                        routines.edit_add(logs, LOGS_PATH)
                     case "2":
-                        print("Creating new objective stuff...")
+                        routines.edit_add(objectives, OBJECTIVES_PATH)
                     case "3":
                         print("Deleting log entry stuff...")
                     case "4":

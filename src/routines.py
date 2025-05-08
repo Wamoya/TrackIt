@@ -1,7 +1,7 @@
 import modules.ui as ui
 import modules.readers as readers
 from modules.readers import Objective, Log
-import subprocess
+#import subprocess
 
 
 def read_db(objectives_path, log_path) -> tuple[list[Objective], list[Log]]: # Read both .csv files and return their values
@@ -36,7 +36,7 @@ def menu(title: str, options: dict[str, str], color: str="cyan") -> str | None:
 
 def get_answer(valid_answers: list[str], color_initial: str="magenta", color_final: str="reset") -> str | None:
 
-    valid_answers_str = f"[{'/'.join(answer for answer in valid_answers)}]"
+    valid_answers_str = f"[{'/'.join(valid_answers)}]"
 
     prompt_msg = f"Waiting for user input {valid_answers_str} "
     error_msg  = f"Invalid input. Accepted values are {valid_answers_str}\n"
@@ -50,3 +50,30 @@ def get_answer(valid_answers: list[str], color_initial: str="magenta", color_fin
         print(error_msg)
         ui.set_color("reset")
         return None
+
+def edit_add(info: list[Objective] | list[Log], path: str):
+
+    if isinstance(info[0], Objective):
+        constructor = Objective
+        parser      = readers.parse_objective
+    else:
+        constructor = Log
+        parser      = readers.parse_log
+
+    parameters = []
+    for parameter in constructor._fields:
+        parameters.append(input(ui.colored_text(f"\t{parameter}: ", "cyan")))
+
+    error = False
+    try:
+        _ = parser(*parameters)
+    except:
+        ui.set_color("red")
+        error = True
+        assert False, "TODO: Finish error handling"
+        print("Error...")
+
+    if not error:
+        new_entry_str = ";".join(parameters)
+        with open(path, "a") as f:
+            f.write(new_entry_str)
