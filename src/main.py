@@ -80,12 +80,16 @@ def main():
                 match answer:
                     case "1":
                         routines.edit_add(logs, LOGS_PATH)
+                        routines.read_db(OBJECTIVES_PATH, LOGS_PATH)
                     case "2":
                         routines.edit_add(objectives, OBJECTIVES_PATH)
+                        routines.read_db(OBJECTIVES_PATH, LOGS_PATH)
                     case "3":
-                        print("Deleting log entry stuff...")
+                        routines.edit_delete(LOGS_PATH)
+                        routines.read_db(OBJECTIVES_PATH, LOGS_PATH)
                     case "4":
-                        print("Deleting objective stuff...")
+                        routines.edit_delete(OBJECTIVES_PATH)
+                        routines.read_db(OBJECTIVES_PATH, LOGS_PATH)
                     case "0":
                         next_menu = "main"
             case "read":

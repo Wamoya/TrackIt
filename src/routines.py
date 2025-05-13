@@ -1,7 +1,7 @@
 import modules.ui as ui
 import modules.readers as readers
 from modules.readers import Objective, Log
-#import subprocess
+import subprocess
 
 
 def read_db(objectives_path, log_path) -> tuple[list[Objective], list[Log]]: # Read both .csv files and return their values
@@ -19,7 +19,7 @@ def read_db(objectives_path, log_path) -> tuple[list[Objective], list[Log]]: # R
 
 
 
-def menu(title: str, options: dict[str, str], color: str="cyan") -> str | None:
+def menu(title: str, options: dict[str, str], color: str="cyan") -> str:
     answer = None
     while answer == None:
         ui.set_color(color)
@@ -68,12 +68,30 @@ def edit_add(info: list[Objective] | list[Log], path: str):
     try:
         _ = parser(*parameters)
     except:
-        ui.set_color("red")
         error = True
-        assert False, "TODO: Finish error handling"
-        print("Error...")
+        ui.set_color("red")
+        print("An error occured when trying to convert user input to new entry...\nReturning to previous menu...")
 
     if not error:
-        new_entry_str = ";".join(parameters)
+        new_entry_str = f"{";".join(parameters)}\n"
         with open(path, "a") as f:
             f.write(new_entry_str)
+
+def edit_delete(path: str):
+
+    with open(path, "r") as f:
+        all_lines = f.readlines()
+
+    result = subprocess.run(
+        ["fzf", "--multi", "--height=40%", "--header=Select entries to delete", "--border"],
+        input = "".join(all_lines[::-1]), # Reverse line order to start the cursor on the last entry
+        text = True,
+        capture_output=True
+    )
+
+    selected_lines = result.stdout.strip().split("\n") if result.stdout else []
+
+    remaining_lines = [line for line in all_lines if line.strip("\n") not in selected_lines]
+
+    with open(path, "w") as f:
+        f.writelines(remaining_lines)
