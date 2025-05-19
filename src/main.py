@@ -43,10 +43,30 @@ def main():
     ui.print_logo()
     objectives, logs = routines.read_db(OBJECTIVES_PATH, LOGS_PATH)
 
-    next_menu = "main"
+    #next_menu = "main"
     running   = True
     while running:
-        match next_menu:
+        command_code = routines.menu2("assets/command_list.txt")
+        match command_code:
+            case 1: # Add new objective
+                routines.edit_add(objectives, OBJECTIVES_PATH)
+                routines.read_db(OBJECTIVES_PATH, LOGS_PATH)
+            case 2: # Add new log
+                routines.edit_add(logs, LOGS_PATH)
+                routines.read_db(OBJECTIVES_PATH, LOGS_PATH)
+            case 3: # Delete objective
+                routines.edit_delete(OBJECTIVES_PATH)
+                routines.read_db(OBJECTIVES_PATH, LOGS_PATH)
+            case 4: # Delete log
+                routines.edit_delete(LOGS_PATH)
+                routines.read_db(OBJECTIVES_PATH, LOGS_PATH)
+            case 5: # Plot general view
+                print("Now imagine a cool function.\nYeah, so cool ik ik")
+            case 99: # Quit
+                running = False
+
+    """
+    match next_menu:
             case "main":
                 title   = "What do you want to do?"
                 options = {"i": "Edit the database.",
@@ -100,6 +120,7 @@ def main():
                         print("...")
                     case "0":
                         next_menu = "main"
+        """
 
 
 

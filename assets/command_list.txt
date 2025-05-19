@@ -1,0 +1,6 @@
+01. Add new objective
+02. Add new log
+03. Delete objective
+04. Delete log
+05. Plot general view
+99. Quit

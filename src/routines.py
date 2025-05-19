@@ -95,3 +95,28 @@ def edit_delete(path: str):
 
     with open(path, "w") as f:
         f.writelines(remaining_lines)
+
+def menu2(command_list_path: str) -> int:
+    with open(command_list_path, "r") as f:
+        all_lines = f.readlines()
+
+    result = subprocess.run(
+        ["fzf", "--height=40%", "--header=Select a command to use", "--border"],
+        input = "".join(all_lines),
+        text = True,
+        capture_output = True
+    )
+    
+    selected_command = result.stdout.strip() if result.stdout else "-1"
+
+    # Format of each command:
+    # 00. Description
+    # (command code). (command description)
+
+    command_code_length = 2
+    command_code        = int(f"{selected_command[:command_code_length]}")
+
+    return command_code
+
+
+
