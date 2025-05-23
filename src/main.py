@@ -43,87 +43,26 @@ def main():
     ui.print_logo()
     objectives, logs = routines.read_db(OBJECTIVES_PATH, LOGS_PATH)
 
-    #next_menu = "main"
     running   = True
     while running:
-        command_code = routines.menu2("assets/command_list.txt")
+        command_code = routines.menu("assets/command_list.txt")
         match command_code:
-            case 1: # Add new objective
+            case  1: # Add new objective
                 routines.edit_add(objectives, OBJECTIVES_PATH)
-                routines.read_db(OBJECTIVES_PATH, LOGS_PATH)
-            case 2: # Add new log
+                objectives, logs = routines.read_db(OBJECTIVES_PATH, LOGS_PATH)
+            case  2: # Add new log
                 routines.edit_add(logs, LOGS_PATH)
-                routines.read_db(OBJECTIVES_PATH, LOGS_PATH)
-            case 3: # Delete objective
+                objectives, logs = routines.read_db(OBJECTIVES_PATH, LOGS_PATH)
+            case  3: # Delete objective
                 routines.edit_delete(OBJECTIVES_PATH)
-                routines.read_db(OBJECTIVES_PATH, LOGS_PATH)
-            case 4: # Delete log
+                objectives, logs = routines.read_db(OBJECTIVES_PATH, LOGS_PATH)
+            case  4: # Delete log
                 routines.edit_delete(LOGS_PATH)
-                routines.read_db(OBJECTIVES_PATH, LOGS_PATH)
-            case 5: # Plot general view
+                objectives, logs = routines.read_db(OBJECTIVES_PATH, LOGS_PATH)
+            case  5: # Plot general view
                 print("Now imagine a cool function.\nYeah, so cool ik ik")
             case 99: # Quit
                 running = False
-
-    """
-    match next_menu:
-            case "main":
-                title   = "What do you want to do?"
-                options = {"i": "Edit the database.",
-                           "o": "Read the database.",
-                           "q": "Quit"}
-            case "edit":
-                title   = "How do you want to edit the database?"
-                options = {"1": "Add a new entry to the log.",
-                           "2": "Create a new objective.",
-                           "3": "Delete a log entry.",
-                           "4": "Delete an objective.",
-                           "0": "Go back."}
-            case "read":
-                title   = "How do you want to read the database?"
-                options = {"1": "...",
-                           "2": "...",
-                           "0": "Go back."}
-
-        answer = routines.menu(title, options)
-
-        match next_menu:
-            case "main":
-                match answer:
-                    case "i":
-                        next_menu = "edit"
-                    case "o":
-                        next_menu = "read"
-                    case "q":
-                        running = False
-            case "edit":
-                match answer:
-                    case "1":
-                        routines.edit_add(logs, LOGS_PATH)
-                        routines.read_db(OBJECTIVES_PATH, LOGS_PATH)
-                    case "2":
-                        routines.edit_add(objectives, OBJECTIVES_PATH)
-                        routines.read_db(OBJECTIVES_PATH, LOGS_PATH)
-                    case "3":
-                        routines.edit_delete(LOGS_PATH)
-                        routines.read_db(OBJECTIVES_PATH, LOGS_PATH)
-                    case "4":
-                        routines.edit_delete(OBJECTIVES_PATH)
-                        routines.read_db(OBJECTIVES_PATH, LOGS_PATH)
-                    case "0":
-                        next_menu = "main"
-            case "read":
-                match answer:
-                    case "1":
-                        print("...")
-                    case "2":
-                        print("...")
-                    case "0":
-                        next_menu = "main"
-        """
-
-
-
 
 
 

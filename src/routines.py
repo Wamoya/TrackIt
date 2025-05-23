@@ -17,39 +17,27 @@ def read_db(objectives_path, log_path) -> tuple[list[Objective], list[Log]]: # R
 
     return objectives, logs
 
+def menu(command_list_path: str) -> int:
+    with open(command_list_path, "r") as f:
+        all_lines = f.readlines()
 
+    result = subprocess.run(
+        ["fzf", "--height=40%", "--header=Select a command to use", "--border", "--layout=reverse-list"],
+        input = "".join(all_lines),
+        text = True,
+        capture_output = True
+    )
+    
+    selected_command = result.stdout.strip() if result.stdout else "-1"
 
-def menu(title: str, options: dict[str, str], color: str="cyan") -> str:
-    answer = None
-    while answer == None:
-        ui.set_color(color)
-        print(title)
-        for key, description in options.items():
-            print(f"\t{key}. {description}")
+    # Format of each command:
+    # 00. Description
+    # (command code). (command description)
 
-        print()
+    command_code_length = 2
+    command_code        = int(f"{selected_command[:command_code_length]}")
 
-        valid_answers = list(options.keys())
-        answer = get_answer(valid_answers)
-
-    return answer
-
-def get_answer(valid_answers: list[str], color_initial: str="magenta", color_final: str="reset") -> str | None:
-
-    valid_answers_str = f"[{'/'.join(valid_answers)}]"
-
-    prompt_msg = f"Waiting for user input {valid_answers_str} "
-    error_msg  = f"Invalid input. Accepted values are {valid_answers_str}\n"
-
-    answer = input(ui.colored_text(prompt_msg, color_initial, color_final)).strip().lower()
-
-    if answer in valid_answers:
-        return answer
-    else:
-        ui.set_color("red")
-        print(error_msg)
-        ui.set_color("reset")
-        return None
+    return command_code
 
 def edit_add(info: list[Objective] | list[Log], path: str):
 
@@ -96,27 +84,6 @@ def edit_delete(path: str):
     with open(path, "w") as f:
         f.writelines(remaining_lines)
 
-def menu2(command_list_path: str) -> int:
-    with open(command_list_path, "r") as f:
-        all_lines = f.readlines()
-
-    result = subprocess.run(
-        ["fzf", "--height=40%", "--header=Select a command to use", "--border"],
-        input = "".join(all_lines),
-        text = True,
-        capture_output = True
-    )
-    
-    selected_command = result.stdout.strip() if result.stdout else "-1"
-
-    # Format of each command:
-    # 00. Description
-    # (command code). (command description)
-
-    command_code_length = 2
-    command_code        = int(f"{selected_command[:command_code_length]}")
-
-    return command_code
-
+    print(f"Deleted entries: {len(selected_lines)}")
 
 
