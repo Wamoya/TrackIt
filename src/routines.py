@@ -2,6 +2,7 @@ import modules.ui as ui
 import modules.readers as readers
 from modules.readers import Objective, Log
 import subprocess
+from datetime import datetime
 
 
 def read_db(objectives_path, log_path) -> tuple[list[Objective], list[Log]]: # Read both .csv files and return their values
@@ -48,8 +49,10 @@ def edit_add(info: list[Objective] | list[Log], path: str):
         constructor = Log
         parser      = readers.parse_log
 
-    parameters = []
-    for parameter in constructor._fields:
+    parameters = [] # This list will contain the parameters of the new objective/log entry
+    parameters.append(datetime.now().strftime("%Y-%m-%d-%H:%M")) # First parameter will always be the current datetime
+
+    for parameter in constructor._fields[1:]: # The first one is skipped `cause it was already added
         parameters.append(input(ui.colored_text(f"\t{parameter}: ", "cyan")))
 
     error = False

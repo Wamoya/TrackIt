@@ -3,7 +3,7 @@ from typing import NamedTuple
 from datetime import datetime, date
 
 Objective = NamedTuple("Objective", [
-    ("creation_date", date),
+    ("creation_datetime", datetime),
     ("id", str),
     ("max", int),
     ("has_deadline", bool),
@@ -13,7 +13,7 @@ Objective = NamedTuple("Objective", [
     ])
 
 Log = NamedTuple("Log", [
-    ("creation_date", date),
+    ("creation_datetime", datetime),
     ("id", str),
     ("value", int),
     ("comments", str)
@@ -51,7 +51,7 @@ def read_logs(file_path: str) -> list[Log]:
 
     return result
 
-def parse_objective(creation_date, id, max, has_deadline, deadline, name, description) -> Objective:
+def parse_objective(creation_datetime, id, max, has_deadline, deadline, name, description) -> Objective:
 
     if has_deadline != "1" and has_deadline != "0": # Ensure has_deadline has always a valid value to avoid possible problems in the future
         raise ValueError("Invalid value in column `has_deadline`.")
@@ -64,7 +64,7 @@ def parse_objective(creation_date, id, max, has_deadline, deadline, name, descri
         deadline = None
 
     return Objective(
-        datetime.strptime(creation_date, "%Y-%m-%d").date(),
+        datetime.strptime(creation_datetime, "%Y-%m-%d-%H:%M"),
         id,
         int(max),
         has_deadline,
@@ -74,9 +74,9 @@ def parse_objective(creation_date, id, max, has_deadline, deadline, name, descri
         )
 
 
-def parse_log(creation_date, id, value, comments) -> Log:
+def parse_log(creation_datetime, id, value, comments) -> Log:
     return Log(
-        datetime.strptime(creation_date, "%Y-%m-%d").date(),
+        datetime.strptime(creation_datetime, "%Y-%m-%d-%H:%M"),
         id,
         int(value),
         comments

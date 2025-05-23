@@ -1,63 +1,63 @@
-creation_date;id;value;comments
-2025-04-10;DEV;1;Initial commit
-2025-04-11;DEV;1;Set up main structure
-2025-04-12;DEV;1;Added CLI menu
-2025-04-13;DEV;1;Implemented CSV reading
-2025-04-15;DEV;1;Basic UI done
-2025-04-16;DEV;1;Refactor modules
-2025-04-17;DEV;1;Add tests
-2025-04-15;WAT;3;Hot day
-2025-04-16;WAT;2;
-2025-04-17;WAT;1;
-2025-04-18;WAT;2;Missed afternoon
-2025-04-19;WAT;3;Great hydration!
-2025-04-20;WAT;2;
-2025-04-21;WAT;2;
-2025-04-22;WAT;1;Busy day
-2025-04-10;GYM;1;Leg day
-2025-04-13;GYM;1;Back and biceps
-2025-04-16;GYM;1;Arms
-2025-04-18;GYM;1;Skipped cardio
-2025-04-21;GYM;1;Chest
-2025-04-11;REA;2;Started 'Atomic Habits'
-2025-04-14;REA;3;
-2025-04-17;REA;1;
-2025-04-20;REA;2;
-2025-04-22;REA;2;Reading in park
-2025-04-13;SLE;1;In bed by 10:50 PM
-2025-04-14;SLE;1;11:00 sharp
-2025-04-15;SLE;0;Midnight :(
-2025-04-16;SLE;1;
-2025-04-17;SLE;1;
-2025-04-18;SLE;1;Slept well
-2025-04-12;MED;1;
-2025-04-13;MED;1;Very focused
-2025-04-14;MED;0;Too rushed
-2025-04-15;MED;1;
-2025-04-16;MED;1;Great session
-2025-04-21;SOC;1;Coffee with friends
-2025-04-25;SOC;1;Board game night
-2025-04-23;LAN;1;Practiced vocab
-2025-04-24;LAN;1;Listened to podcast
-2025-04-26;LAN;0;Skipped lesson
-2025-04-27;LAN;1;Grammar drills
-2025-04-15;PLN;1;Wrote plan for week
-2025-04-22;PLN;1;Planned next sprint
-2025-04-29;PLN;1;
-2025-04-12;CLE;1;Cleaned desk
-2025-04-15;CLE;1;
-2025-04-18;CLE;0;No time
-2025-04-25;CLE;1;Full room clean
-2025-04-12;WAL;1;Nice weather
-2025-04-13;WAL;1;
-2025-04-14;WAL;0;Rainy
-2025-04-15;WAL;1;Park loop
-2025-04-16;WAL;1;To the library
-2025-04-17;WAL;1;
-2025-04-18;WAL;1;Evening walk
-2025-04-19;WAL;1;Quick stroll
-2025-04-21;STU;1;Reviewed sorting
-2025-04-22;STU;1;Practiced recursion
-2025-04-23;STU;1;Dynamic programming
-2025-04-24;STU;0;Too tired
-2025-04-25;STU;1;Graphs and BFS
+creation_datetime;id;value;comments
+2025-04-10-08:32;DEV;1;Initial commit
+2025-04-11-14:47;DEV;1;Set up main structure
+2025-04-12-09:18;DEV;1;Added CLI menu
+2025-04-13-16:03;DEV;1;Implemented CSV reading
+2025-04-15-11:25;DEV;1;Basic UI done
+2025-04-16-13:52;DEV;1;Refactor modules
+2025-04-17-07:40;DEV;1;Add tests
+2025-04-15-15:12;WAT;3;Hot day
+2025-04-16-17:08;WAT;2;
+2025-04-17-10:20;WAT;1;
+2025-04-18-12:33;WAT;2;Missed afternoon
+2025-04-19-19:11;WAT;3;Great hydration!
+2025-04-20-08:45;WAT;2;
+2025-04-21-09:59;WAT;2;
+2025-04-22-18:24;WAT;1;Busy day
+2025-04-10-20:01;GYM;1;Leg day
+2025-04-13-17:50;GYM;1;Back and biceps
+2025-04-16-21:10;GYM;1;Arms
+2025-04-18-14:42;GYM;1;Skipped cardio
+2025-04-21-08:03;GYM;1;Chest
+2025-04-11-10:16;REA;2;Started 'Atomic Habits'
+2025-04-14-13:37;REA;3;
+2025-04-17-15:09;REA;1;
+2025-04-20-20:27;REA;2;
+2025-04-22-07:39;REA;2;Reading in park
+2025-04-13-22:30;SLE;1;In bed by 10:50 PM
+2025-04-14-23:00;SLE;1;11:00 sharp
+2025-04-15-00:05;SLE;0;Midnight :(
+2025-04-16-23:15;SLE;1;
+2025-04-17-22:55;SLE;1;
+2025-04-18-21:48;SLE;1;Slept well
+2025-04-12-06:30;MED;1;
+2025-04-13-07:00;MED;1;Very focused
+2025-04-14-06:15;MED;0;Too rushed
+2025-04-15-06:45;MED;1;
+2025-04-16-06:10;MED;1;Great session
+2025-04-21-18:22;SOC;1;Coffee with friends
+2025-04-25-20:19;SOC;1;Board game night
+2025-04-23-07:32;LAN;1;Practiced vocab
+2025-04-24-08:50;LAN;1;Listened to podcast
+2025-04-26-09:10;LAN;0;Skipped lesson
+2025-04-27-10:27;LAN;1;Grammar drills
+2025-04-15-11:40;PLN;1;Wrote plan for week
+2025-04-22-12:05;PLN;1;Planned next sprint
+2025-04-29-14:48;PLN;1;
+2025-04-12-15:17;CLE;1;Cleaned desk
+2025-04-15-16:42;CLE;1;
+2025-04-18-17:30;CLE;0;No time
+2025-04-25-18:00;CLE;1;Full room clean
+2025-04-12-19:21;WAL;1;Nice weather
+2025-04-13-20:10;WAL;1;
+2025-04-14-21:15;WAL;0;Rainy
+2025-04-15-22:20;WAL;1;Park loop
+2025-04-16-23:30;WAL;1;To the library
+2025-04-17-06:00;WAL;1;
+2025-04-18-07:15;WAL;1;Evening walk
+2025-04-19-08:45;WAL;1;Quick stroll
+2025-04-21-14:00;STU;1;Reviewed sorting
+2025-04-22-15:20;STU;1;Practiced recursion
+2025-04-23-16:35;STU;1;Dynamic programming
+2025-04-24-17:45;STU;0;Too tired
+2025-04-25-18:55;STU;1;Graphs and BFS
