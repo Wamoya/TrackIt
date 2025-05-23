@@ -52,21 +52,21 @@ def edit_add(info: list[Objective] | list[Log], path: str):
     parameters = [] # This list will contain the parameters of the new objective/log entry
     parameters.append(datetime.now().strftime("%Y-%m-%d-%H:%M")) # First parameter will always be the current datetime
 
-    for parameter in constructor._fields[1:]: # The first one is skipped `cause it was already added
+    for parameter in constructor._fields[1:]: # The first one is skipped because it was already added
         parameters.append(input(ui.colored_text(f"\t{parameter}: ", "cyan")))
 
-    error = False
+    # Check if the input can be converted into Objective|Log
     try:
         _ = parser(*parameters)
     except:
-        error = True
         ui.set_color("red")
         print("An error occured when trying to convert user input to new entry...\nReturning to previous menu...")
+        return # Return before aappending to the file since there was an input error
 
-    if not error:
-        new_entry_str = f"{";".join(parameters)}\n"
-        with open(path, "a") as f:
-            f.write(new_entry_str)
+    # This will only be executed if there was no imput error
+    new_entry_str = f"{";".join(parameters)}\n"
+    with open(path, "a") as f:
+        f.write(new_entry_str)
 
 def edit_delete(path: str):
 
